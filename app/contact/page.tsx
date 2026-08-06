@@ -19,18 +19,30 @@ export default function ContactPage() {
     <>
       <PageJsonLd breadcrumbs={crumbs} />
       <PageShell
-        title="Instruct a Human Rights Expert Witness"
-        subtitle="Submit your case details for a confidential response within one to two business days."
+        title="Instruct a human rights expert"
+        subtitle="Four fields. Confidential response within one to two business days."
         breadcrumbs={crumbs}
       >
-        <p className="mb-8 text-[#374151] leading-relaxed">
-          Complete the form below or email us at{" "}
-          <a href={`mailto:${SITE_EMAIL}`} className="font-semibold text-[#C8922A] hover:underline">
-            {SITE_EMAIL}
-          </a>
-          . We respond to all instruction enquiries within one to two business days.
-        </p>
-        <ContactForm />
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_14rem]">
+          <div>
+            <p className="mb-8 max-w-xl leading-relaxed text-body">
+              Prefer email?{" "}
+              <a href={`mailto:${SITE_EMAIL}`} className="font-semibold text-seal hover:underline">
+                {SITE_EMAIL}
+              </a>
+            </p>
+            <ContactForm />
+          </div>
+          <aside className="border-t border-line pt-6 text-sm text-body lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+            <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-seal">Include if useful</p>
+            <ul className="mt-4 space-y-3">
+              <li>Forum (FTT / UT)</li>
+              <li>Violation theme</li>
+              <li>Return destination</li>
+              <li>Hearing or filing date</li>
+            </ul>
+          </aside>
+        </div>
       </PageShell>
     </>
   );

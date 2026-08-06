@@ -21,31 +21,31 @@ export default function QualificationsPage() {
         subtitle="The credentials and expertise required for human rights expert evidence in UK immigration tribunals."
         breadcrumbs={crumbs}
       >
-        <h2 className="text-xl font-bold text-[#0A2540]">Core Credentials</h2>
-        <p className="mt-4 mb-4 text-[#374151] leading-relaxed">
+        <h2 className="text-xl font-bold text-ink">Core Credentials</h2>
+        <p className="mt-4 mb-4 text-body leading-relaxed">
           Human rights expert witnesses hold advanced academic qualifications including PhD, MA in human rights law,
           international law, political science, or sociology. They demonstrate field research experience, familiarity
           with ICCPR, CAT, CEDAW, ICERD, and ECHR standards, Immigration Tribunal Practice Direction compliance, and prior
           tribunal acceptance in human rights cases.
         </p>
 
-        <h2 className="mt-8 text-xl font-bold text-[#0A2540]">Thematic Human Rights Expertise</h2>
-        <p className="mt-4 mb-4 text-[#374151] leading-relaxed">
+        <h2 className="mt-8 text-xl font-bold text-ink">Thematic Human Rights Expertise</h2>
+        <p className="mt-4 mb-4 text-body leading-relaxed">
           Human rights experts on this site provide treaty standards and violation analysis through a neutral, thematic
           framework. They assess ICCPR, CAT, CEDAW, ICERD, and ECHR benchmarks, violation severity, and return risk for
           the appellant&apos;s specific profile. See our{" "}
-          <Link href="/human-rights-framework" className="text-[#C8922A] hover:underline">
+          <Link href="/human-rights-framework" className="text-seal hover:underline">
             human rights framework guide
           </Link>{" "}
           and{" "}
-          <Link href="/how-reports-work" className="text-[#C8922A] hover:underline">
+          <Link href="/how-reports-work" className="text-seal hover:underline">
             how reports work
           </Link>
           .
         </p>
 
-        <h2 className="mt-8 text-xl font-bold text-[#0A2540]">Expert Duties: Immigration Tribunal</h2>
-        <p className="mt-4 mb-4 text-[#374151] leading-relaxed">
+        <h2 className="mt-8 text-xl font-bold text-ink">Expert Duties: Immigration Tribunal</h2>
+        <p className="mt-4 mb-4 text-body leading-relaxed">
           Experts owe a paramount duty to the tribunal under Practice Direction paragraph 10 and Ikarian Reefer
           principles. Independence, objectivity, and unbiased assistance are required. Experts must not advocate for
           either party and must clearly distinguish assumed facts from independent opinion. A statement of truth and

@@ -10,15 +10,19 @@ export function RelatedLinks({
 }) {
   if (links.length === 0) return null;
   return (
-    <aside className="mt-12 min-w-0 rounded-[8px] border border-[#C8D4E4] bg-[#F4F7FB] p-4 sm:p-6">
-      <h2 className="text-base font-bold text-[#0A2540] sm:text-lg">{title}</h2>
-      <ul className="mt-4 grid grid-cols-1 gap-2 md:grid-cols-2">
-        {links.map((link) => (
+    <aside className="mt-12 min-w-0 border border-line bg-surface p-4 sm:p-6">
+      <p className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-seal">Continue</p>
+      <h2 className="mt-2 font-display text-2xl text-ink">{title}</h2>
+      <ul className="mt-5 grid grid-cols-1 gap-1 md:grid-cols-2">
+        {links.map((link, i) => (
           <li key={link.href}>
             <Link
               href={link.href}
-              className="inline-flex min-h-[44px] items-center text-sm font-medium text-[#0A2540] hover:text-[#C8922A] hover:underline"
+              className="inline-flex min-h-[44px] items-center gap-3 text-sm text-ink hover:text-seal"
             >
+              <span className="text-[0.65rem] font-semibold tracking-[0.1em] text-seal">
+                {String(i + 1).padStart(2, "0")}
+              </span>
               {link.label}
             </Link>
           </li>

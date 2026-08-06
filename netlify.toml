@@ -5,13 +5,13 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Production: POST /api/submit-lead is handled by Next.js app/api/submit-lead/route.ts.
-# Uncomment for netlify dev when testing the function directly:
-# [[redirects]]
-#   from = "/api/submit-lead"
-#   to = "/.netlify/functions/submit-lead"
-#   status = 200
-#   force = true
+# Lead_notification_setup.md — rewrite so production uses the Netlify function
+# (not the Next.js App Router route). Local `next dev` still uses app/api/submit-lead.
+[[redirects]]
+  from = "/api/submit-lead"
+  to = "/.netlify/functions/submit-lead"
+  status = 200
+  force = true
 
 [[headers]]
   for = "/sitemap.xml"

@@ -30,7 +30,7 @@ export default function ServicesPage() {
  subtitle="Immigration Tribunal Practice Direction compliant reports for all major human rights violation types."
  breadcrumbs={crumbs}
  >
- <p className="mb-8 text-[#374151] leading-relaxed">
+ <p className="mb-8 text-body leading-relaxed">
  Human Rights Experts provides eight specialist expert report services for UK immigration solicitors,
  barristers, and Legal Aid practitioners. All reports are prepared by qualified human rights experts with
  familiarity in international human rights law, treaty standards, and UK tribunal practice.
@@ -42,13 +42,13 @@ export default function ServicesPage() {
  href: `/services/${s.id}`,
  }))}
  />
- <p className="mt-8 text-[#374151]">
+ <p className="mt-8 text-body">
  Questions about instructing an expert? See{" "}
- <Link href="/how-to-instruct" className="font-semibold text-[#C8922A] hover:underline">
+ <Link href="/how-to-instruct" className="font-semibold text-seal hover:underline">
  how to instruct
  </Link>{" "}
  or{" "}
- <Link href="/contact" className="font-semibold text-[#C8922A] hover:underline">
+ <Link href="/contact" className="font-semibold text-seal hover:underline">
  contact us
  </Link>
  .

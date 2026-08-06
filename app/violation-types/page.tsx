@@ -25,7 +25,7 @@ export default function ViolationTypesPage() {
  subtitle="Thematic human rights violation analysis covering all treaty standards applicable in UK asylum and immigration proceedings."
  breadcrumbs={crumbs}
  >
- <p className="mb-8 text-[#374151] leading-relaxed">
+ <p className="mb-8 text-body leading-relaxed">
  Human rights expert witnesses provide independent analysis of specific violation categories using international
  treaty standards. Each violation type below links to detailed guidance on legal framework, expert methodology,
  and return risk assessment for UK immigration tribunals.

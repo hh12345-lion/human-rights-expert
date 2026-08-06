@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
-import { appendRow, isGoogleSheetsConfigured } from "@/lib/google-sheets";
+import {
+  appendRowWithRetry,
+  isGoogleSheetsConfigured,
+  logSheetsError,
+} from "@/lib/google-sheets";
 import {
   buildLeadWebhookPayload,
   getLeadWebhookUrl,
@@ -11,6 +15,11 @@ function sanitize(str: string): string {
   return str.replace(/<[^>]*>/g, "").trim();
 }
 
+/**
+ * Column order for the "Human Rights Expert" tab:
+ * Timestamp | Full Name | Organisation | Email | Phone | Violation Type |
+ * Country of Origin | Proceedings | Funding | Summary | Brand
+ */
 export async function POST(request: Request) {
   const webhookUrl = getLeadWebhookUrl();
 
@@ -59,12 +68,9 @@ export async function POST(request: Request) {
 
   if (isGoogleSheetsConfigured()) {
     try {
-      await appendRow(row);
+      await appendRowWithRetry(row);
     } catch (error) {
-      console.error("Google Sheets write failed:", {
-        message: error instanceof Error ? error.message : "Unknown error",
-        timestamp: new Date().toISOString(),
-      });
+      logSheetsError(error, "submit-lead");
       if (!webhookUrl) {
         return NextResponse.json({ error: "Failed to save submission" }, { status: 500 });
       }

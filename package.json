@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "eslint",
     "seo:generate": "tsx scripts/generate-seo.ts",
-    "seo:verify": "tsx scripts/verify-seo.ts"
+    "seo:verify": "tsx scripts/verify-seo.ts",
+    "sheets:test": "tsx --env-file=.env.local scripts/test-sheets.ts"
   },
   "dependencies": {
     "googleapis": "^172.0.0",

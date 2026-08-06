@@ -1,29 +1,29 @@
 import Link from "next/link";
 
 export function CTASection({
-  title = "Instruct a Human Rights Expert Witness",
-  description = "Submit your case details for a confidential response within one to two business days. Legal Aid compatible rates available for all human rights violation types.",
+  title = "Instruct a human rights expert witness",
+  description = "Send a short confidential brief. We respond within one to two business days with availability, scope, and Legal Aid–compatible rates.",
 }: {
   title?: string;
   description?: string;
 }) {
   return (
-    <section className="bg-[#0A2540] py-12 sm:py-14 md:py-16">
-      <div className="mx-auto min-w-0 max-w-6xl px-4 text-center sm:px-6 lg:px-8">
-        <h2 className="text-xl font-bold text-white sm:text-2xl md:text-3xl">{title}</h2>
-        <p className="mx-auto mt-4 max-w-2xl text-sm text-white/90 sm:text-base">{description}</p>
-        <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center sm:gap-4">
-          <Link
-            href="/contact"
-            className="inline-flex min-h-[44px] w-full items-center justify-center rounded-[4px] bg-[#C8922A] px-6 py-3 font-semibold text-white transition hover:bg-[#b07f22] sm:w-auto sm:min-w-[200px] sm:px-8"
-          >
-            Instruct an Expert
+    <section className="border-y border-line bg-ink py-14 sm:py-16">
+      <div className="mx-auto flex min-w-0 max-w-7xl flex-col gap-8 px-4 sm:flex-row sm:items-end sm:justify-between sm:px-6 lg:px-8">
+        <div className="max-w-xl">
+          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-seal">Next step</p>
+          <h2 className="mt-3 font-display text-3xl text-white sm:text-4xl">{title}</h2>
+          <p className="mt-4 text-sm leading-relaxed text-white/65 sm:text-base">{description}</p>
+        </div>
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+          <Link href="/contact" className="btn-seal w-full sm:w-auto">
+            Instruct
           </Link>
           <Link
             href="/how-to-instruct"
-            className="inline-flex min-h-[44px] w-full items-center justify-center rounded-[4px] border-2 border-white px-6 py-3 font-semibold text-white transition hover:bg-white/10 sm:w-auto sm:min-w-[200px] sm:px-8"
+            className="btn-ghost w-full border-white/30 text-white hover:bg-white/10 sm:w-auto"
           >
-            How to Instruct
+            How to instruct
           </Link>
         </div>
       </div>

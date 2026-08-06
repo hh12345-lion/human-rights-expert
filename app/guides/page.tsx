@@ -23,7 +23,7 @@ export default function GuidesPage() {
         subtitle="Practical guides for UK immigration practitioners on instructing human rights expert witnesses."
         breadcrumbs={crumbs}
       >
-        <p className="mb-8 text-[#374151] leading-relaxed">
+        <p className="mb-8 text-body leading-relaxed">
           These guides provide detailed reference material on human rights law standards, expert report methodology,
           and tribunal practice for immigration solicitors, barristers, and Legal Aid practitioners.
         </p>

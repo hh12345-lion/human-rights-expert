@@ -37,7 +37,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       <PageJsonLd breadcrumbs={crumbs} faqs={service.faqs} />
       <PageShell title={service.h1} breadcrumbs={crumbs}>
         {service.content.map((p, i) => (
-          <p key={i} className="mb-4 text-[#374151] leading-relaxed">
+          <p key={i} className="mb-4 text-body leading-relaxed">
             {p}
           </p>
         ))}
@@ -48,7 +48,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
         <Link
           href="/contact"
-          className="mt-8 inline-flex min-h-[44px] w-full items-center justify-center rounded-[4px] bg-[#C8922A] px-6 py-3 font-semibold text-white hover:bg-[#b07f22] sm:w-auto"
+          className="mt-8 inline-flex min-h-[44px] w-full items-center justify-center rounded-[4px] bg-seal px-6 py-3 font-semibold text-white hover:bg-seal-deep sm:w-auto"
         >
           Contact Us
         </Link>

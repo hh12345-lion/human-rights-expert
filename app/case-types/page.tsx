@@ -23,7 +23,7 @@ export default function CaseTypesPage() {
         subtitle="Expert witness reports for all major human rights proceedings in UK immigration tribunals."
         breadcrumbs={crumbs}
       >
-        <p className="mb-8 text-[#374151] leading-relaxed">
+        <p className="mb-8 text-body leading-relaxed">
           Human rights expert witnesses provide independent analysis across the full range of UK immigration tribunal
           proceedings. Select a case type below for detailed guidance on expert evidence requirements and methodology.
         </p>

@@ -13,35 +13,49 @@ export default function OpenGraphImage() {
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: "#0A2540",
-          padding: 80,
+          alignItems: "flex-start",
+          justifyContent: "flex-end",
+          backgroundColor: "#12161C",
+          padding: 72,
         }}
       >
         <div
           style={{
+            display: "flex",
+            width: 56,
+            height: 56,
+            border: "1px solid rgba(255,255,255,0.35)",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "#FFFFFF",
+            fontSize: 22,
+            marginBottom: 28,
+          }}
+        >
+          HR
+        </div>
+        <div
+          style={{
             fontSize: 64,
-            fontWeight: 700,
+            fontWeight: 400,
             color: "#FFFFFF",
             letterSpacing: "-0.02em",
-            textAlign: "center",
-            lineHeight: 1.1,
+            lineHeight: 1.05,
           }}
         >
           Human Rights Experts
         </div>
         <p
           style={{
-            marginTop: 32,
-            fontSize: 36,
+            marginTop: 24,
+            fontSize: 28,
             fontWeight: 600,
-            color: "#C8922A",
-            textAlign: "center",
-            lineHeight: 1.3,
+            color: "#8B2942",
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
           }}
         >
-          Human Rights Expert Witness UK
+          Tribunal evidence panel
         </p>
       </div>
     ),

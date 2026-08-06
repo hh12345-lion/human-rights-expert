@@ -40,15 +40,15 @@ export default async function ViolationTypePage({ params }: { params: Promise<{ 
       <PageJsonLd breadcrumbs={crumbs} faqs={type.faqs} />
       <PageShell title={type.h1} breadcrumbs={crumbs}>
         {type.content.map((p, i) => (
-          <p key={i} className="mb-4 text-[#374151] leading-relaxed">
+          <p key={i} className="mb-4 text-body leading-relaxed">
             {p}
           </p>
         ))}
 
         {slug === "torture-cruel-inhuman-treatment" && (
-          <div className="my-8 rounded-[8px] border border-[#C8D4E4] bg-[#F4F7FB] p-5">
-            <h2 className="text-lg font-bold text-[#0A2540]">CAT Article 1 Torture Definition</h2>
-            <p className="mt-3 text-[#374151] leading-relaxed">
+          <div className="my-8 rounded-[8px] border border-line bg-mist p-5">
+            <h2 className="text-lg font-bold text-ink">CAT Article 1 Torture Definition</h2>
+            <p className="mt-3 text-body leading-relaxed">
               Under the Convention Against Torture Article 1, torture means any act by which severe pain or suffering,
               whether physical or mental, is intentionally inflicted by or at the instigation of or with the consent or
               acquiescence of a public official for a specific purpose. Article 3 ECHR covers a broader category including
@@ -58,9 +58,9 @@ export default async function ViolationTypePage({ params }: { params: Promise<{ 
         )}
 
         {slug === "human-rights-defenders-journalists" && (
-          <div id="shrinking-civic-space" className="my-8 scroll-mt-24 rounded-[8px] border border-[#C8D4E4] bg-[#F4F7FB] p-5">
-            <h2 className="text-lg font-bold text-[#0A2540]">Shrinking Civic Space 2025–2026</h2>
-            <p className="mt-3 text-[#374151] leading-relaxed">
+          <div id="shrinking-civic-space" className="my-8 scroll-mt-24 rounded-[8px] border border-line bg-mist p-5">
+            <h2 className="text-lg font-bold text-ink">Shrinking Civic Space 2025–2026</h2>
+            <p className="mt-3 text-body leading-relaxed">
               Shrinking civic space describes the global trend of increased restrictions on civil society, journalists, and
               human rights defenders documented in UN Human Rights Council and Special Rapporteur reports for 2025 and 2026.
               The UN Special Rapporteur on the situation of human rights defenders documents systematic reprisals, including
@@ -70,13 +70,13 @@ export default async function ViolationTypePage({ params }: { params: Promise<{ 
           </div>
         )}
 
-        <h2 className="mt-8 text-xl font-bold text-[#0A2540]">Related Case Types</h2>
+        <h2 className="mt-8 text-xl font-bold text-ink">Related Case Types</h2>
         <ul className="mt-4 space-y-2">
           {type.relatedCaseTypes.map((s) => {
             const ct = getCaseType(s);
             return (
               <li key={s}>
-                <Link href={`/case-types/${s}`} className="text-[#C8922A] hover:underline">
+                <Link href={`/case-types/${s}`} className="text-seal hover:underline">
                   {ct?.title ?? s}
                 </Link>
               </li>

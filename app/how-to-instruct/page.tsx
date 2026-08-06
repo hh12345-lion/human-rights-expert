@@ -61,13 +61,13 @@ export default function HowToInstructPage() {
       >
         {sections.map((s) => (
           <div key={s.title} className="mb-8">
-            <h2 className="text-xl font-bold text-[#0A2540]">{s.title}</h2>
-            <p className="mt-3 text-[#374151] leading-relaxed">{s.content}</p>
+            <h2 className="text-xl font-bold text-ink">{s.title}</h2>
+            <p className="mt-3 text-body leading-relaxed">{s.content}</p>
           </div>
         ))}
         <Link
           href="/contact"
-          className="inline-flex min-h-[44px] items-center rounded-[4px] bg-[#C8922A] px-6 py-3 font-semibold text-white hover:bg-[#b07f22]"
+          className="inline-flex min-h-[44px] items-center rounded-[4px] bg-seal px-6 py-3 font-semibold text-white hover:bg-seal-deep"
         >
           Instruct an Expert
         </Link>

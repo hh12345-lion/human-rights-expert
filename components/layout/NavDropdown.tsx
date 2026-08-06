@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useId, useState } from "react";
 
 export type NavDropdownItem = { label: string; href: string };
 
@@ -14,6 +14,11 @@ type NavDropdownProps = {
 
 export function NavDropdown({ label, href, items, scrollable }: NavDropdownProps) {
   const [open, setOpen] = useState(false);
+  const panelId = useId();
+
+  const mid = Math.ceil(items.length / 2);
+  const left = items.slice(0, mid);
+  const right = items.slice(mid);
 
   return (
     <div
@@ -29,42 +34,60 @@ export function NavDropdown({ label, href, items, scrollable }: NavDropdownProps
     >
       <Link
         href={href}
-        className={`inline-flex min-h-[44px] items-center gap-1 rounded-[4px] px-2 py-2 text-sm hover:bg-[#F4F7FB] hover:text-[#0A2540] ${open ? "bg-[#F4F7FB] text-[#0A2540]" : "text-[#374151]"}`}
+        className={`inline-flex min-h-[44px] items-center gap-2 px-2 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.14em] transition-colors ${
+          open ? "text-white" : "text-white/65 hover:text-white"
+        }`}
         aria-expanded={open}
         aria-haspopup="true"
+        aria-controls={panelId}
       >
-        {label}
-        <svg
-          className={`h-4 w-4 opacity-60 transition-transform duration-150 ${open ? "rotate-180" : ""}`}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+        <span
+          className={`h-1.5 w-1.5 rounded-full transition-colors ${open ? "bg-seal" : "bg-white/35"}`}
           aria-hidden
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
+        />
+        {label}
       </Link>
 
-      {/* pt-2 bridge keeps dropdown open while moving pointer from trigger to menu */}
       <div
-        className={`absolute left-0 top-full z-[60] pt-2 ${scrollable ? "min-w-[280px]" : "min-w-[240px]"} ${open ? "pointer-events-auto visible opacity-100" : "pointer-events-none invisible opacity-0"} transition-opacity duration-150`}
+        id={panelId}
+        className={`absolute left-1/2 top-full z-[60] w-[min(92vw,36rem)] -translate-x-1/2 pt-0 ${
+          open ? "pointer-events-auto visible opacity-100" : "pointer-events-none invisible opacity-0"
+        } transition-opacity duration-200`}
       >
-        <ul
-          className={`rounded-[4px] border border-[#C8D4E4] bg-white py-2 shadow-[0_4px_16px_rgba(0,0,0,0.1)] ${scrollable ? "max-h-[min(70vh,22rem)] overflow-y-auto" : ""}`}
-          role="menu"
-        >
-          {items.map((item) => (
-            <li key={item.href} role="none">
-              <Link
-                href={item.href}
-                role="menuitem"
-                className="block px-4 py-2.5 text-sm text-[#374151] hover:bg-[#F4F7FB] hover:text-[#0A2540] focus:bg-[#F4F7FB] focus:text-[#0A2540] focus:outline-none"
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <div className="ledger-panel px-5 py-5 sm:px-7 sm:py-6">
+          <div className="mb-4 flex items-end justify-between gap-4 border-b border-white/10 pb-3">
+            <div>
+              <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-seal">Index</p>
+              <p className="mt-1 font-display text-xl text-white sm:text-2xl">{label}</p>
+            </div>
+            <Link
+              href={href}
+              className="shrink-0 text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-white/50 hover:text-white"
+            >
+              Open hub →
+            </Link>
+          </div>
+          <div
+            className={`grid gap-x-8 sm:grid-cols-2 ${scrollable ? "max-h-[min(60vh,20rem)] overflow-y-auto pr-1" : ""}`}
+            role="menu"
+          >
+            {[left, right].map((col, colIdx) => (
+              <ul key={colIdx} className="min-w-0">
+                {col.map((item, i) => {
+                  const n = colIdx === 0 ? i + 1 : mid + i + 1;
+                  return (
+                    <li key={item.href} role="none">
+                      <Link href={item.href} role="menuitem" className="ledger-link">
+                        <span className="idx">{String(n).padStart(2, "0")}</span>
+                        <span>{item.label}</span>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
