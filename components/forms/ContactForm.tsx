@@ -32,8 +32,6 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="min-w-0 w-full max-w-xl space-y-7">
-      <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
-
       <div className="min-w-0">
         <label className={labelClass} htmlFor="name">
           Name *
