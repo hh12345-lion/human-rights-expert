@@ -13,44 +13,60 @@ export function ContactForm() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("loading");
     const form = e.currentTarget;
-    const data = new FormData(form);
 
-    const payload = {
-      fullName: String(data.get("name") ?? "").trim(),
-      organisation: String(data.get("law_firm") ?? "").trim(),
-      email: String(data.get("email") ?? "").trim(),
+    // Read from the DOM so browser autofill values are included
+    const fullName = String(
+      (form.elements.namedItem("name") as HTMLInputElement | null)?.value ?? ""
+    ).trim();
+    const email = String(
+      (form.elements.namedItem("email") as HTMLInputElement | null)?.value ?? ""
+    ).trim();
+    const organisation = String(
+      (form.elements.namedItem("law_firm") as HTMLInputElement | null)?.value ?? ""
+    ).trim();
+    const summary = String(
+      (form.elements.namedItem("summary") as HTMLTextAreaElement | null)?.value ?? ""
+    ).trim();
+
+    if (!fullName || !email || !organisation || !summary) {
+      setStatus("error");
+      return;
+    }
+
+    setStatus("loading");
+    const ok = await postSubmitLead({
+      fullName,
+      organisation,
+      email,
       phone: "",
-      summary: String(data.get("summary") ?? "").trim(),
-    };
-
-    const ok = await postSubmitLead(payload);
+      summary,
+    });
     if (ok) router.push("/thank-you");
     else setStatus("error");
   }
 
   return (
-    <form onSubmit={handleSubmit} className="min-w-0 w-full max-w-xl space-y-7">
+    <form onSubmit={handleSubmit} className="min-w-0 w-full max-w-xl space-y-7" noValidate>
       <div className="min-w-0">
         <label className={labelClass} htmlFor="name">
           Name *
         </label>
-        <input id="name" name="name" required autoComplete="name" className="field-shell" />
+        <input id="name" name="name" autoComplete="name" className="field-shell" />
       </div>
 
       <div className="min-w-0">
         <label className={labelClass} htmlFor="email">
           Email *
         </label>
-        <input id="email" type="email" name="email" required autoComplete="email" className="field-shell" />
+        <input id="email" type="email" name="email" autoComplete="email" className="field-shell" />
       </div>
 
       <div className="min-w-0">
         <label className={labelClass} htmlFor="law_firm">
           Firm *
         </label>
-        <input id="law_firm" name="law_firm" required autoComplete="organization" className="field-shell" />
+        <input id="law_firm" name="law_firm" autoComplete="organization" className="field-shell" />
       </div>
 
       <div className="min-w-0">
@@ -60,7 +76,6 @@ export function ContactForm() {
         <textarea
           id="summary"
           name="summary"
-          required
           rows={3}
           placeholder="Forum, violation theme, deadline"
           className="field-shell min-h-[5.5rem] resize-y"
@@ -69,7 +84,7 @@ export function ContactForm() {
 
       {status === "error" && (
         <p className="border border-seal/30 bg-mist px-4 py-3 text-sm text-ink">
-          Something went wrong. Email{" "}
+          Please complete all fields, or email{" "}
           <a href={`mailto:${SITE_EMAIL}`} className="font-medium text-seal underline">
             {SITE_EMAIL}
           </a>

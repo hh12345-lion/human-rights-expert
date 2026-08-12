@@ -286,18 +286,37 @@ section {
 .field-shell {
   width: 100%;
   min-height: 48px;
-  border: 0;
-  border-bottom: 2px solid var(--color-line);
-  background: transparent;
-  padding: 0.75rem 0;
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  padding: 0.75rem 0.9rem;
   font-size: 1rem;
+  line-height: 1.4;
   color: var(--color-ink);
-  transition: border-color 0.2s ease;
+  -webkit-text-fill-color: var(--color-ink);
+  caret-color: var(--color-ink);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field-shell::placeholder {
+  color: var(--color-steel);
+  -webkit-text-fill-color: var(--color-steel);
+  opacity: 1;
 }
 
 .field-shell:focus {
   outline: none;
-  border-bottom-color: var(--color-seal);
+  border-color: var(--color-seal);
+  box-shadow: 0 0 0 3px rgba(139, 41, 66, 0.12);
+}
+
+/* Keep typed / autofilled text visible on mist paper backgrounds */
+.field-shell:-webkit-autofill,
+.field-shell:-webkit-autofill:hover,
+.field-shell:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--color-ink);
+  caret-color: var(--color-ink);
+  box-shadow: 0 0 0 1000px var(--color-surface) inset;
+  transition: background-color 99999s ease-in-out 0s;
 }
 
 .btn-seal {
