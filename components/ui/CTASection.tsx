@@ -11,8 +11,8 @@ export function CTASection({
     <section className="border-y border-line bg-ink py-14 sm:py-16">
       <div className="mx-auto flex min-w-0 max-w-7xl flex-col gap-8 px-4 sm:flex-row sm:items-end sm:justify-between sm:px-6 lg:px-8">
         <div className="max-w-xl">
-          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-seal">Next step</p>
-          <h2 className="mt-3 font-display text-3xl text-white sm:text-4xl">{title}</h2>
+          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-seal">Next step</p>
+          <h2 className="mt-3 font-display text-3xl font-semibold text-white sm:text-4xl">{title}</h2>
           <p className="mt-4 text-sm leading-relaxed text-white/65 sm:text-base">{description}</p>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">

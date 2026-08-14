@@ -15,31 +15,17 @@ export default function OpenGraphImage() {
           flexDirection: "column",
           alignItems: "flex-start",
           justifyContent: "flex-end",
-          backgroundColor: "#12161C",
+          backgroundColor: "#FAFAF9",
           padding: 72,
+          borderBottom: "12px solid #C2410C",
         }}
       >
         <div
           style={{
-            display: "flex",
-            width: 56,
-            height: 56,
-            border: "1px solid rgba(255,255,255,0.35)",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "#FFFFFF",
-            fontSize: 22,
-            marginBottom: 28,
-          }}
-        >
-          HR
-        </div>
-        <div
-          style={{
-            fontSize: 64,
-            fontWeight: 400,
-            color: "#FFFFFF",
-            letterSpacing: "-0.02em",
+            fontSize: 56,
+            fontWeight: 700,
+            color: "#1C1917",
+            letterSpacing: "-0.03em",
             lineHeight: 1.05,
           }}
         >
@@ -47,15 +33,15 @@ export default function OpenGraphImage() {
         </div>
         <p
           style={{
-            marginTop: 24,
-            fontSize: 28,
+            marginTop: 20,
+            fontSize: 22,
             fontWeight: 600,
-            color: "#8B2942",
-            letterSpacing: "0.08em",
+            color: "#C2410C",
+            letterSpacing: "0.1em",
             textTransform: "uppercase",
           }}
         >
-          Tribunal evidence panel
+          Expert evidence · UK tribunals
         </p>
       </div>
     ),

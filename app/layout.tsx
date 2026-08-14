@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Instrument_Serif, Sora } from "next/font/google";
+import { Archivo, IBM_Plex_Sans } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CookieConsentProvider } from "@/components/cookies";
@@ -8,16 +8,17 @@ import { SITE_URL } from "@/lib/constants";
 import { isProductionSite } from "@/lib/seo/is-production";
 import "./globals.css";
 
-const sora = Sora({
+const plex = IBM_Plex_Sans({
   subsets: ["latin"],
-  variable: "--font-sora",
+  weight: ["400", "500", "600"],
+  variable: "--font-plex",
   display: "swap",
 });
 
-const instrument = Instrument_Serif({
+const archivo = Archivo({
   subsets: ["latin"],
-  weight: "400",
-  variable: "--font-instrument",
+  weight: ["500", "600", "700"],
+  variable: "--font-archivo",
   display: "swap",
 });
 
@@ -53,7 +54,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-GB" className={`${sora.variable} ${instrument.variable} h-full`}>
+    <html lang="en-GB" className={`${plex.variable} ${archivo.variable} h-full`}>
       <body className="flex min-h-full min-w-0 flex-col overflow-x-hidden font-sans antialiased">
         <ConsentDefaultsScript />
         <CookieConsentProvider>
