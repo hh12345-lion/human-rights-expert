@@ -1,3 +1,12 @@
+function getSiteDomain(): string {
+  const raw = process.env.NEXT_PUBLIC_SITE_URL || "https://humanrightsexperts.com";
+  try {
+    return new URL(raw).hostname.replace(/^www\./, "");
+  } catch {
+    return "humanrightsexperts.com";
+  }
+}
+
 /** Brand label sent to Lead_notification_url webhook (n8n). */
 export const LEAD_BRAND_NAME = "Human Rights Experts";
 
@@ -23,6 +32,7 @@ export function buildLeadWebhookPayload(input: SubmitLeadInput) {
     Email: input.email.trim(),
     "Phone Number": input.phone.trim(),
     "Brand name": LEAD_BRAND_NAME,
+    domain: getSiteDomain(),
   };
 }
 

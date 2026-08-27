@@ -21,6 +21,15 @@ const { google } = require("googleapis");
 
 const BRAND_NAME = "Human Rights Experts";
 
+
+function getSiteDomain() {
+  const raw = process.env.NEXT_PUBLIC_SITE_URL || "https://humanrightsexperts.com";
+  try {
+    return new URL(raw).hostname.replace(/^www\./, "");
+  } catch {
+    return "humanrightsexperts.com";
+  }
+}
 function jsonResponse(statusCode, data) {
   return {
     statusCode,
@@ -147,6 +156,7 @@ exports.handler = async (event) => {
         Email: mail,
         "Phone Number": tel,
         "Brand name": BRAND_NAME,
+    domain: getSiteDomain(),
       };
 
       const response = await fetch(webhookUrl, {
