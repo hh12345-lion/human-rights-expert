@@ -8,4 +8,4 @@ Disallow: /admin/
 Disallow: /private/
 Disallow: /.netlify/
 
-Sitemap: https://www.humanrightsexperts.com/sitemap.xml
+Sitemap: https://humanrightsexperts.com/sitemap.xml
