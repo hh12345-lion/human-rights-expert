@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { SITE_EMAIL } from "@/lib/constants";
 import { postSubmitLead } from "@/lib/submit-lead";
+import { submitNetlifyForm } from "@/lib/submitNetlifyForm";
 
 const labelClass = "mb-1 block text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-ink";
 
@@ -42,12 +43,29 @@ export function ContactForm() {
       phone: "",
       summary,
     });
-    if (ok) router.push("/thank-you");
-    else setStatus("error");
+    if (ok) {
+      try {
+        await submitNetlifyForm("contact", {
+          name: fullName,
+          email,
+          law_firm: organisation,
+          summary,
+        });
+      } catch {
+        // Lead webhook already stored the enquiry; don't block the visitor.
+      }
+      router.push("/thank-you");
+    } else setStatus("error");
   }
 
   return (
-    <form onSubmit={handleSubmit} className="min-w-0 w-full max-w-xl space-y-7" noValidate>
+    <form name="contact" method="POST" action="/__forms.html" onSubmit={handleSubmit} className="min-w-0 w-full max-w-xl space-y-7" noValidate>
+      <input type="hidden" name="form-name" value="contact" />
+      <p className="hidden" aria-hidden="true">
+        <label>
+          Do not fill this out: <input name="bot-field" tabIndex={-1} autoComplete="off" />
+        </label>
+      </p>
       <div className="min-w-0">
         <label className={labelClass} htmlFor="name">
           Name *
