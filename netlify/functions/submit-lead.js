@@ -51,6 +51,31 @@ function getWebhookUrl() {
   ).trim();
 }
 
+function resolveLeadMessage(body) {
+  if (!body || typeof body !== "object") return "";
+  const keys = [
+    "message",
+    "Message",
+    "description",
+    "enquiry",
+    "details",
+    "summary",
+    "notes",
+    "matter",
+    "caseSummary",
+    "additionalInfo",
+    "additional_info",
+    "caseDetails",
+    "enquiryDetails",
+  ];
+  for (const key of keys) {
+    if (body[key] != null && String(body[key]).trim()) {
+      return String(body[key]).trim();
+    }
+  }
+  return "";
+}
+
 function isGoogleSheetsConfigured() {
   return Boolean(
     process.env.GOOGLE_SHEET_ID?.trim() &&
@@ -149,14 +174,15 @@ exports.handler = async (event) => {
       }
     }
 
-    // Lead_notification_setup.md — only these four outbound keys
+    // Lead_notification_setup.md — outbound keys + message
     if (webhookUrl) {
       const payload = {
         "Full Name": name,
         Email: mail,
         "Phone Number": tel,
         "Brand name": BRAND_NAME,
-    domain: getSiteDomain(),
+        domain: getSiteDomain(),
+        message: resolveLeadMessage(parsed),
       };
 
       const response = await fetch(webhookUrl, {

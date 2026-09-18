@@ -42,6 +42,7 @@ export function ContactForm() {
       email,
       phone: "",
       summary,
+      message: summary,
     });
     if (ok) {
       try {
