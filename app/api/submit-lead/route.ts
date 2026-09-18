@@ -78,7 +78,19 @@ export async function POST(request: Request) {
   }
 
   if (webhookUrl) {
-    const outbound = buildLeadWebhookPayload({ fullName, email, phone });
+    const message =
+      sanitize(
+        body.message ??
+          (body as { Message?: string }).Message ??
+          body.summary ??
+          (body as { description?: string }).description ??
+          (body as { enquiry?: string }).enquiry ??
+          (body as { details?: string }).details ??
+          (body as { notes?: string }).notes ??
+          (body as { matter?: string }).matter ??
+          ""
+      );
+    const outbound = buildLeadWebhookPayload({ fullName, email, phone, message });
     try {
       const res = await fetch(webhookUrl, {
         method: "POST",
