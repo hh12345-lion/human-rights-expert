@@ -23,6 +23,7 @@ export const resourcesNavLinks = [
   { label: "Article 3 Deportation", href: "/article-3-deportation" },
   { label: "How Reports Work", href: "/how-reports-work" },
   { label: "Solicitor Guides", href: "/guides" },
+  { label: "Blog", href: "/blog" },
   { label: "How to Instruct", href: "/how-to-instruct" },
   { label: "Qualifications", href: "/qualifications" },
   { label: "Glossary", href: "/glossary" },
