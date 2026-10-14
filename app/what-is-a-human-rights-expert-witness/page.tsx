@@ -5,6 +5,7 @@ import { ResponsiveTableWrap } from "@/components/ui/ResponsiveTableWrap";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { createMetadata } from "@/lib/metadata";
 import { articleSchema } from "@/lib/schema";
+import { sectionPhotos } from "@/lib/page-photos";
 
 const WHAT_IS_FAQS = [
   {
@@ -49,7 +50,7 @@ export default function WhatIsAHumanRightsExpertPage() {
           path: "/what-is-a-human-rights-expert-witness",
         })}
       />
-      <PageShell
+      <PageShell photo={sectionPhotos.whatIs}
         title="What Is a Human Rights Expert Witness?"
         subtitle="The role, qualifications, and value of human rights expert evidence in UK immigration tribunals."
         breadcrumbs={crumbs}

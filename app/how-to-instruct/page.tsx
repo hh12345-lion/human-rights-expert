@@ -2,6 +2,7 @@ import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { createMetadata } from "@/lib/metadata";
+import { sectionPhotos } from "@/lib/page-photos";
 
 export const metadata = createMetadata({
   title: "How to Instruct a Human Rights Expert Witness | UK Solicitors Guide",
@@ -54,7 +55,7 @@ export default function HowToInstructPage() {
   return (
     <>
       <PageJsonLd breadcrumbs={crumbs} />
-      <PageShell
+      <PageShell photo={sectionPhotos.howToInstruct}
         title="How to Instruct a Human Rights Expert Witness"
         subtitle="A step-by-step guide for UK immigration solicitors, barristers, and Legal Aid practitioners."
         breadcrumbs={crumbs}

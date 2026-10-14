@@ -1,6 +1,6 @@
 const DEFAULT_SITE_URL = "https://humanrightsexperts.com";
 
-/** Canonical origin for SEO — strips www; ignores localhost/netlify preview env. */
+/** Canonical origin for SEO: strips www; ignores localhost/netlify preview env. */
 export function getPublicSiteUrl(): string {
   const fallback = DEFAULT_SITE_URL;
   const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim();

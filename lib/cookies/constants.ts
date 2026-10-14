@@ -1,6 +1,6 @@
 import type { CookieCategory } from "./types";
 
-/** localStorage key — versioned to allow migration without cross-site leakage */
+/** localStorage key: versioned to allow migration without cross-site leakage */
 export const CONSENT_STORAGE_KEY = "hrex_cookie_consent_v1";
 
 /** Bump to invalidate stored consent and re-prompt users after policy changes */

@@ -8,10 +8,7 @@ import { createMetadata } from "@/lib/metadata";
 import { violationTypes, getViolationType } from "@/data/violation-types";
 import { getCaseType } from "@/data/case-types";
 import { getViolationTypeRelatedLinks } from "@/data/related-links";
-
-export function generateStaticParams() {
-  return violationTypes.map((v) => ({ slug: v.slug }));
-}
+import { photoFor } from "@/lib/page-photos";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -38,7 +35,7 @@ export default async function ViolationTypePage({ params }: { params: Promise<{ 
   return (
     <>
       <PageJsonLd breadcrumbs={crumbs} faqs={type.faqs} />
-      <PageShell title={type.h1} breadcrumbs={crumbs}>
+      <PageShell photo={photoFor(slug)} title={type.h1} breadcrumbs={crumbs}>
         {type.content.map((p, i) => (
           <p key={i} className="mb-4 text-body leading-relaxed">
             {p}

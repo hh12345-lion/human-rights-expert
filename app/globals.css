@@ -1,22 +1,28 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Copper Docket — distinct from sister brands */
-  --color-ink: #1c1917;
-  --color-paper: #fafaf9;
-  --color-mist: #f5f5f4;
-  --color-seal: #c2410c;
-  --color-seal-deep: #9a3412;
-  --color-jade: #57534e;
-  --color-steel: #78716c;
-  --color-line: #e7e5e4;
+  /* Human Rights Experts brand palette. Legacy token names map onto the guideline colours. */
+  --color-navy: #112b3a;
+  --color-navy-deep: #0b1e29;
+  --color-olive: #7d7e66;
+  --color-burgundy: #833d42;
+  --color-cream: #f4efe5;
+  --color-taupe: #d7cdc1;
+  --color-ink: #112b3a;
+  --color-paper: #f4efe5;
+  --color-mist: #ebe4d8;
+  --color-seal: #833d42;
+  --color-seal-deep: #6a2f34;
+  --color-jade: #7d7e66;
+  --color-steel: #5d6058;
+  --color-line: #d7cdc1;
   --color-surface: #ffffff;
-  --color-body: #44403c;
-  --font-sans: var(--font-plex);
-  --font-display: var(--font-archivo);
+  --color-body: #2c3e48;
+  --font-sans: var(--font-afacad);
+  --font-display: var(--font-newsreader);
   --radius-card: 0px;
   --radius-sm: 0px;
-  --shadow-lift: 0 16px 48px rgba(28, 25, 23, 0.1);
+  --shadow-lift: 0 22px 50px -24px rgba(17, 43, 58, 0.45);
   --breakpoint-xs: 375px;
 }
 
@@ -40,9 +46,9 @@ html {
 
 body {
   background-color: var(--color-paper);
-  background-image: linear-gradient(180deg, #fafaf9 0%, #f5f5f4 100%);
   color: var(--color-body);
-  font-family: var(--font-plex), system-ui, sans-serif;
+  font-family: var(--font-afacad), system-ui, sans-serif;
+  font-size: 1.0625rem;
   overflow-x: hidden;
   min-width: 320px;
   padding-left: env(safe-area-inset-left);
@@ -53,16 +59,32 @@ h1,
 h2,
 h3,
 .font-display {
-  font-family: var(--font-archivo), system-ui, sans-serif;
-  letter-spacing: -0.03em;
-  font-weight: 600;
+  font-family: var(--font-newsreader), Georgia, serif;
+  letter-spacing: -0.012em;
+  font-weight: 500;
 }
 
-img,
-video,
-svg {
-  max-width: 100%;
-  height: auto;
+@layer base {
+  img,
+  video,
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* The monogram's diamond: photographs are cut with two opposing 45 degree corners. */
+.diamond-cut {
+  clip-path: polygon(var(--cut, 18%) 0, 100% 0, 100% calc(100% - var(--cut, 18%)), calc(100% - var(--cut, 18%)) 100%, 0 100%, 0 var(--cut, 18%));
+}
+
+.diamond-cut-sm {
+  --cut: 2.25rem;
+  clip-path: polygon(var(--cut) 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%, 0 var(--cut));
+}
+
+.diamond-tl {
+  clip-path: polygon(var(--cut, 2.25rem) 0, 100% 0, 100% 100%, 0 100%, 0 var(--cut, 2.25rem));
 }
 
 a {
@@ -81,7 +103,7 @@ section {
 }
 
 ::selection {
-  background: rgba(194, 65, 12, 0.18);
+  background: rgba(131, 61, 66, 0.2);
   color: var(--color-ink);
 }
 
@@ -163,28 +185,6 @@ section {
   background: var(--color-line);
 }
 
-@keyframes folioIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.anim-rise {
-  animation: folioIn 0.65s ease both;
-}
-
-.anim-rise-delay {
-  animation: folioIn 0.65s ease 0.12s both;
-}
-
-.anim-rise-delay-2 {
-  animation: folioIn 0.65s ease 0.24s both;
-}
 
 #mobile-nav-toggle:checked ~ .header-bar .icon-open {
   display: none;
@@ -240,7 +240,7 @@ section {
 .field-shell:focus {
   outline: none;
   border-color: var(--color-seal);
-  box-shadow: 0 0 0 3px rgba(194, 65, 12, 0.12);
+  box-shadow: 0 0 0 3px rgba(131, 61, 66, 0.15);
 }
 
 .field-shell:-webkit-autofill,
@@ -254,36 +254,37 @@ section {
 
 .btn-seal {
   display: inline-flex;
-  min-height: 44px;
+  min-height: 48px;
   align-items: center;
   justify-content: center;
+  gap: 0.6rem;
   background: var(--color-seal);
   color: #fff;
-  padding: 0.75rem 1.75rem;
-  font-family: var(--font-archivo), system-ui, sans-serif;
-  font-size: 0.75rem;
+  padding: 0.75rem 1.9rem 0.75rem 1.6rem;
+  font-family: var(--font-afacad), system-ui, sans-serif;
+  font-size: 1rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  clip-path: polygon(0.9rem 0, 100% 0, 100% calc(100% - 0.9rem), calc(100% - 0.9rem) 100%, 0 100%, 0 0.9rem);
   transition: background 0.2s ease;
 }
 
 .btn-seal:hover {
-  background: var(--color-seal-deep);
+  background: var(--color-navy);
 }
 
 .btn-ghost {
   display: inline-flex;
-  min-height: 44px;
+  min-height: 48px;
   align-items: center;
   justify-content: center;
-  border: 1px solid currentColor;
+  gap: 0.6rem;
+  border: 1.5px solid currentColor;
   padding: 0.75rem 1.75rem;
-  font-family: var(--font-archivo), system-ui, sans-serif;
-  font-size: 0.75rem;
+  font-family: var(--font-afacad), system-ui, sans-serif;
+  font-size: 1rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0.01em;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
@@ -364,7 +365,7 @@ section {
 
 .prose-content h2 {
   color: var(--color-ink);
-  font-family: var(--font-display), system-ui, sans-serif;
+  font-family: var(--font-newsreader), Georgia, serif;
   font-size: 1.5rem;
   font-weight: 600;
   margin-top: 2rem;
@@ -373,7 +374,7 @@ section {
 
 .prose-content h3 {
   color: var(--color-ink);
-  font-family: var(--font-display), system-ui, sans-serif;
+  font-family: var(--font-newsreader), Georgia, serif;
   font-size: 1.25rem;
   font-weight: 600;
   margin-top: 1.5rem;
@@ -391,6 +392,18 @@ section {
   margin-bottom: 1rem;
   padding-left: 1.5rem;
   color: var(--color-body);
+}
+
+.prose-content ul {
+  list-style: disc;
+}
+
+.prose-content ol {
+  list-style: decimal;
+}
+
+.prose-content li::marker {
+  color: var(--color-seal);
 }
 
 .prose-content li {

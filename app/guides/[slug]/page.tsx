@@ -6,10 +6,7 @@ import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { createMetadata } from "@/lib/metadata";
 import { articleSchema } from "@/lib/schema";
 import { guides, getGuide } from "@/data/guides";
-
-export function generateStaticParams() {
-  return guides.map((g) => ({ slug: g.slug }));
-}
+import { photoFor } from "@/lib/page-photos";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -36,7 +33,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
           path,
         })}
       />
-      <PageShell title={guide.h1} breadcrumbs={crumbs}>
+      <PageShell photo={photoFor(slug)} title={guide.h1} breadcrumbs={crumbs}>
         {guide.content.map((p, i) => (
           <p key={i} className="mb-4 text-body leading-relaxed">
             {p}

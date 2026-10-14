@@ -1,6 +1,6 @@
 ---
 title: "How to Draft a Human Rights Expert Letter of Instruction for a Legal Aid Case"
-description: "How solicitors draft a clear human rights expert letter of instruction for Legal Aid immigration and asylum cases — scope, questions, documents, and independence."
+description: "How solicitors draft a clear human rights expert letter of instruction for Legal Aid immigration and asylum cases: scope, questions, documents, and independence."
 date: "2026-09-25"
 updated: "2026-09-25"
 image: "/images/blog/how-to-draft-human-rights-expert-letter-of-instruction-for-legal-aid.webp"

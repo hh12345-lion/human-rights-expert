@@ -2,6 +2,7 @@ import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { createMetadata } from "@/lib/metadata";
+import { sectionPhotos } from "@/lib/page-photos";
 
 export const metadata = createMetadata({
   title: "Human Rights Expert Witness Qualifications UK",
@@ -16,7 +17,7 @@ export default function QualificationsPage() {
   return (
     <>
       <PageJsonLd breadcrumbs={crumbs} />
-      <PageShell
+      <PageShell photo={sectionPhotos.qualifications}
         title="Human Rights Expert Witness Qualifications UK"
         subtitle="The credentials and expertise required for human rights expert evidence in UK immigration tribunals."
         breadcrumbs={crumbs}

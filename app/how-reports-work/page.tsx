@@ -4,6 +4,7 @@ import { FAQSection } from "@/components/ui/FAQSection";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { createMetadata } from "@/lib/metadata";
 import { articleSchema } from "@/lib/schema";
+import { sectionPhotos } from "@/lib/page-photos";
 
 const PAGE_DESCRIPTION =
  "How human rights expert reports work: Practice Direction standards, report structure, CPIN analysis, Adam Pipe 2025 guidance, and Legal Aid compatibility for UK immigration tribunals.";
@@ -42,7 +43,7 @@ export default function HowReportsWorkPage() {
  description: PAGE_DESCRIPTION,
  path: "/how-reports-work",
  })} />
- <PageShell
+ <PageShell photo={sectionPhotos.howReportsWork}
  title="How Human Rights Expert Reports Work: Standards, Structure and Process"
  subtitle="Practice Direction compliant human rights expert evidence for UK immigration tribunals."
  breadcrumbs={crumbs}

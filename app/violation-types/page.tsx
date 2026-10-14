@@ -3,6 +3,7 @@ import { CardGrid } from "@/components/ui/CardGrid";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { createMetadata } from "@/lib/metadata";
 import { violationTypes } from "@/data/violation-types";
+import { sectionPhotos } from "@/lib/page-photos";
 
 export const metadata = createMetadata({
  title: "Human Rights Violation Types | Expert Witness UK",
@@ -20,7 +21,7 @@ export default function ViolationTypesPage() {
  return (
  <>
  <PageJsonLd breadcrumbs={crumbs} />
- <PageShell
+ <PageShell photo={sectionPhotos.violationTypes}
  title="Human Rights Violation Types"
  subtitle="Thematic human rights violation analysis covering all treaty standards applicable in UK asylum and immigration proceedings."
  breadcrumbs={crumbs}

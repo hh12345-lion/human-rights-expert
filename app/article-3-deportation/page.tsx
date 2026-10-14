@@ -7,6 +7,7 @@ import { ResponsiveTableWrap } from "@/components/ui/ResponsiveTableWrap";
 import { createMetadata } from "@/lib/metadata";
 import { articleSchema } from "@/lib/schema";
 import { getPillarRelatedLinks } from "@/data/related-links";
+import { sectionPhotos } from "@/lib/page-photos";
 
 const PAGE_DESCRIPTION =
   "Expert guide to Article 3 ECHR deportation and removal cases for UK solicitors: Soering standard, real risk of torture, inhuman or degrading treatment, leading Supreme Court return risk authority, and expert evidence requirements.";
@@ -33,7 +34,7 @@ export default function Article3DeportationPage() {
           path: "/article-3-deportation",
         })}
       />
-      <PageShell
+      <PageShell photo={sectionPhotos.article3}
         title="Article 3 ECHR Deportation and Removal: Expert Evidence Guide for UK Solicitors"
         subtitle="The definitive reference on Article 3 non-refoulement, real risk analysis, and expert evidence in UK deportation and removal proceedings."
         breadcrumbs={crumbs}

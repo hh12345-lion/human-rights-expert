@@ -6,6 +6,7 @@ import { JsonLd } from "@/components/ui/JsonLd";
 import { createMetadata } from "@/lib/metadata";
 import { servicesPageGraph } from "@/lib/schema";
 import { services } from "@/data/services";
+import { sectionPhotos } from "@/lib/page-photos";
 
 export const metadata = createMetadata({
  title: "Human Rights Expert Witness Services | Asylum & Immigration Tribunals",
@@ -25,7 +26,7 @@ export default function ServicesPage() {
  services.map((s) => ({ id: s.id, name: s.name, description: s.description }))
  )}
  />
- <PageShell
+ <PageShell photo={sectionPhotos.services}
  title="Human Rights Expert Witness Services"
  subtitle="Immigration Tribunal Practice Direction compliant reports for all major human rights violation types."
  breadcrumbs={crumbs}

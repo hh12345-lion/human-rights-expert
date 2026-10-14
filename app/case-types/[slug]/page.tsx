@@ -6,10 +6,7 @@ import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { createMetadata } from "@/lib/metadata";
 import { caseTypes, getCaseType } from "@/data/case-types";
 import { getViolationType } from "@/data/violation-types";
-
-export function generateStaticParams() {
-  return caseTypes.map((c) => ({ slug: c.slug }));
-}
+import { photoFor } from "@/lib/page-photos";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -36,7 +33,7 @@ export default async function CaseTypePage({ params }: { params: Promise<{ slug:
   return (
     <>
       <PageJsonLd breadcrumbs={crumbs} faqs={caseType.faqs} />
-      <PageShell title={caseType.h1} breadcrumbs={crumbs}>
+      <PageShell photo={photoFor(slug)} title={caseType.h1} breadcrumbs={crumbs}>
         {caseType.content.map((p, i) => (
           <p key={i} className="mb-4 text-body leading-relaxed">
             {p}

@@ -36,6 +36,13 @@ export function organizationSchema() {
  "@id": `${SITE_URL}/#organization`,
  name: "Human Rights Experts",
  url: SITE_URL,
+ logo: {
+ "@type": "ImageObject",
+ url: `${SITE_URL}/brand/icon-512.png`,
+ width: 512,
+ height: 512,
+ },
+ image: `${SITE_URL}/brand/og.png`,
  email: SITE_EMAIL,
  address: { "@type": "PostalAddress", addressCountry: "GB" },
  areaServed: ["United Kingdom"],

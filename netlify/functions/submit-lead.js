@@ -8,8 +8,8 @@
  * Inbound from the site:
  *   { fullName, email, phone } (+ optional sheet fields)
  *
- * Outbound to Lead_notification_url (or LEAD_NOTIFICATION_URL) — only these keys:
- *   { "Full Name", "Email", "Phone Number", "Brand name" }
+ * Outbound to Lead_notification_url (or LEAD_NOTIFICATION_URL), only these keys:
+ *   { "Full Name", "Email", "Phone Number", "Brand name", "domain", "message" }
  *
  * Also appends a row to Google Sheets when GOOGLE_* env vars are set
  * (Google_sheets_setup.md) so production keeps sheet + webhook.
@@ -184,7 +184,7 @@ exports.handler = async (event) => {
       }
     }
 
-    // Lead_notification_setup.md — outbound keys + message
+    // Lead_notification_setup.md: outbound keys + message
     if (webhookUrl) {
       const payload = {
         "Full Name": name,

@@ -7,6 +7,7 @@ import { ResponsiveTableWrap } from "@/components/ui/ResponsiveTableWrap";
 import { createMetadata } from "@/lib/metadata";
 import { articleSchema } from "@/lib/schema";
 import { getPillarRelatedLinks } from "@/data/related-links";
+import { sectionPhotos } from "@/lib/page-photos";
 
 const PAGE_DESCRIPTION =
   "Complete guide to human rights law standards in UK asylum and immigration proceedings for solicitors: ICCPR, CAT, CEDAW, ECHR Article 3, violation severity, and expert report methodology.";
@@ -33,7 +34,7 @@ export default function HumanRightsFrameworkPage() {
           path: "/human-rights-framework",
         })}
       />
-      <PageShell
+      <PageShell photo={sectionPhotos.framework}
         title="Human Rights Law in UK Asylum and Immigration Proceedings: A Complete Guide for Solicitors"
         subtitle="The authoritative reference on international human rights treaty standards, violation severity, and expert evidence for UK immigration practitioners."
         breadcrumbs={crumbs}

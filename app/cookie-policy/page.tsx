@@ -5,6 +5,7 @@ import { CookieSettingsButton } from "@/components/cookies";
 import { createMetadata } from "@/lib/metadata";
 import { CATEGORY_META } from "@/lib/cookies/constants";
 import { SITE_EMAIL } from "@/lib/constants";
+import { sectionPhotos } from "@/lib/page-photos";
 
 export const metadata = createMetadata({
   title: "Cookie Policy | Human Rights Experts",
@@ -21,7 +22,7 @@ export default function CookiePolicyPage() {
   return (
     <>
       <PageJsonLd breadcrumbs={crumbs} />
-      <PageShell title="Cookie Policy" subtitle="Last updated: June 2026" breadcrumbs={crumbs}>
+      <PageShell photo={sectionPhotos.legal} title="Cookie Policy" subtitle="Last updated: June 2026" breadcrumbs={crumbs}>
         <p className="text-body leading-relaxed">
           This Cookie Policy explains how Human Rights Experts (&quot;we&quot;, &quot;us&quot;) uses cookies and
           similar technologies when you visit humanrightsexperts.com. It should be read alongside our{" "}

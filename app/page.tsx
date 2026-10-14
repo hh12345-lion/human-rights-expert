@@ -3,12 +3,15 @@ import Link from "next/link";
 import { CTASection } from "@/components/ui/CTASection";
 import { RelatedLinks } from "@/components/ui/RelatedLinks";
 import { JsonLd } from "@/components/ui/JsonLd";
+import { Diamond, DiamondPhoto, Mark } from "@/components/brand/Brand";
 import { homepageGraph, websiteSchema } from "@/lib/schema";
 import { violationTypes } from "@/data/violation-types";
 import { services } from "@/data/services";
 import { caseTypes } from "@/data/case-types";
 import { createMetadata } from "@/lib/metadata";
 import { getHomepageRelatedLinks } from "@/data/related-links";
+import { photos } from "@/lib/photos";
+import { photoFor } from "@/lib/page-photos";
 
 export const metadata = createMetadata({
   title: "Human Rights Expert Witness UK | Asylum, Article 3 & Immigration Tribunal Reports",
@@ -17,12 +20,26 @@ export const metadata = createMetadata({
   path: "/",
 });
 
-const notes = [
-  { href: "#why", label: "Why evidence" },
-  { href: "#violations", label: "Violations" },
-  { href: "#method", label: "Method" },
-  { href: "#services", label: "Services" },
-  { href: "#cases", label: "Case types" },
+const pillars = [
+  {
+    title: "Treaty mapping",
+    desc: "Each report anchors findings to the treaty provisions the tribunal must apply, not generic country summaries.",
+  },
+  {
+    title: "Practice Direction fit",
+    desc: "Structured for the 2024 Practice Direction page limit and the Adam Pipe October 2025 expert report guidance.",
+  },
+  {
+    title: "Legal Aid ready",
+    desc: "Instruction packs and rates prepared for LAA prior authority in FTT and Upper Tribunal work.",
+  },
+];
+
+const method = [
+  "Conflict check and scope note against your grounds of appeal and refusal letter.",
+  "Source matrix: treaty text, UN observations, reliable NGO and academic material, cited rather than paraphrased into advocacy.",
+  "Opinion confined to expertise: severity, pattern, protection efficacy, and Article 3 / refugee risk on return.",
+  "Declaration of duty to the tribunal, CV annex, and page discipline for filing.",
 ];
 
 export default function HomePage() {
@@ -30,230 +47,201 @@ export default function HomePage() {
     <>
       <JsonLd data={[homepageGraph(), websiteSchema()]} />
 
-      {/* Split folio hero — brand on left panel, image on right (no overlay) */}
-      <section className="border-b border-line bg-mist">
-        <div className="mx-auto grid max-w-7xl lg:grid-cols-2">
-          <div className="flex flex-col justify-center px-4 py-14 sm:px-6 sm:py-20 lg:px-10 lg:py-24">
-            <p className="anim-rise text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-seal">
-              UK Immigration &amp; Asylum Chamber
-            </p>
-            <h1 className="anim-rise-delay mt-4 font-display text-4xl font-semibold leading-[1.05] text-ink min-[375px]:text-5xl sm:text-6xl">
-              Human Rights Experts
+      {/* Hero: Westminster Hall as the background, washed in navy so the title reads first. */}
+      <section className="relative isolate overflow-hidden bg-navy">
+        <Image
+          src={photos.westminsterHall.src}
+          alt={photos.westminsterHall.alt}
+          fill
+          priority
+          sizes="100vw"
+          className="-z-20 object-cover object-center"
+        />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-r from-navy via-navy/85 to-navy/35" />
+        <div aria-hidden className="absolute inset-x-0 bottom-0 -z-10 h-1/3 bg-gradient-to-t from-navy/80 to-transparent" />
+        {/* The outline of the monogram's diamond and the two figures' heads, set over the photograph. */}
+        <span
+          aria-hidden
+          className="pointer-events-none absolute -right-40 top-1/2 hidden h-[46rem] w-[46rem] -translate-y-1/2 rotate-45 border border-cream/25 lg:block"
+        />
+        <span aria-hidden className="pointer-events-none absolute right-[22%] top-[18%] hidden h-10 w-10 rounded-full bg-cream/90 lg:block" />
+        <span aria-hidden className="pointer-events-none absolute right-[12%] top-[46%] hidden h-7 w-7 rounded-full bg-olive lg:block" />
+
+        <div className="relative mx-auto max-w-7xl min-w-0 px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-36">
+          <div className="max-w-2xl">
+            <h1 className="font-display text-[2.6rem] font-medium leading-[1.04] text-cream sm:text-6xl lg:text-[4.4rem]">
+              Human rights expert evidence for UK tribunals
             </h1>
-            <p className="anim-rise-delay-2 mt-5 max-w-md text-base leading-relaxed text-body sm:text-lg">
-              Independent thematic evidence on treaty standards, violation severity, and return risk — written for
-              solicitors instructing in FTT and Upper Tribunal proceedings.
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-cream/85 sm:text-xl">
+              Independent thematic evidence on treaty standards, violation severity, and return risk, written for
+              solicitors instructing in First-tier and Upper Tribunal proceedings.
             </p>
-            <div className="anim-rise-delay-2 mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Link href="/contact" className="btn-seal w-full sm:w-auto">
-                Instruct an Expert
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <Link href="/contact" className="btn-seal w-full hover:!bg-cream hover:!text-navy sm:w-auto">
+                Instruct an expert
               </Link>
-              <Link
-                href="/how-to-instruct"
-                className="btn-ghost w-full border-ink/30 text-ink hover:bg-ink hover:text-white sm:w-auto"
-              >
-                Instruction path
+              <Link href="/how-to-instruct" className="btn-ghost w-full border-cream/50 text-cream hover:bg-cream/10 sm:w-auto">
+                How to instruct
               </Link>
             </div>
-          </div>
-          <div className="relative min-h-[16rem] border-t border-line lg:min-h-full lg:border-l lg:border-t-0">
-            <Image
-              src="/images/hero-chamber.jpg"
-              alt="Quiet stone corridor of a European hearing chamber, soft clerestory light across limestone floors"
-              fill
-              priority
-              className="object-cover object-center"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
+            <ul className="mt-12 flex flex-wrap gap-x-6 gap-y-2 border-t border-cream/20 pt-5 text-[0.98rem] text-cream/85">
+              {["First-tier Tribunal", "Upper Tribunal", "Article 3 ECHR", "Legal Aid compatible"].map((t) => (
+                <li key={t} className="flex items-center gap-2">
+                  <Diamond className="h-2.5 w-2.5 text-[#C9A6A9]" />
+                  {t}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
 
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
-        <div className="folio-shell">
-          <div className="min-w-0 space-y-20">
-            <section id="why" className="scroll-mt-28">
-              <div className="folio-rule mb-6" />
-              <h2 className="font-display text-3xl font-semibold text-ink sm:text-4xl">
-                Why human rights expert evidence decides contested returns
-              </h2>
-              <p className="mt-5 max-w-2xl text-base leading-relaxed text-body sm:text-lg">
-                Home Office refusal letters frequently cite general country material without mapping the appellant’s
-                profile to ICCPR, CAT, CEDAW, ICERD, or ECHR Article 3 thresholds. A human rights expert witness closes
-                that gap: independent analysis of violation patterns, state protection failures, and foreseeable harm on
-                return — formatted for Immigration Tribunal Practice Direction limits and Legal Aid prior authority.
-              </p>
-              <div className="band-grid mt-10 sm:grid-cols-3">
-                {[
-                  {
-                    title: "Treaty mapping",
-                    desc: "Each report anchors findings to the treaty provisions the tribunal must apply, not generic country summaries.",
-                  },
-                  {
-                    title: "Practice Direction fit",
-                    desc: "Structured for the 2024 Practice Direction page limit and the Adam Pipe October 2025 expert report guidance.",
-                  },
-                  {
-                    title: "Legal Aid ready",
-                    desc: "Instruction packs and rates prepared for LAA prior authority in FTT and Upper Tribunal work.",
-                  },
-                ].map((item) => (
-                  <div key={item.title} className="bg-surface p-6">
-                    <h3 className="font-display text-xl font-semibold text-ink">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-body">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            <section id="violations" className="scroll-mt-28">
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-                <div>
-                  <div className="folio-rule mb-6" />
-                  <h2 className="font-display text-3xl font-semibold text-ink sm:text-4xl">Violation themes</h2>
-                  <p className="mt-3 max-w-xl text-body">
-                    Torture, detention, expression, religion, gender, LGBT rights, defenders, and state violence.
-                  </p>
+      <section id="why" className="scroll-mt-28 bg-surface py-16 sm:py-24">
+        <div className="mx-auto grid max-w-7xl min-w-0 gap-14 px-4 sm:px-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-center lg:px-8">
+          <DiamondPhoto photo={photos.haslarIrc} aspect="aspect-[4/5]" sizes="(max-width: 1024px) 85vw, 440px" className="mx-auto w-full max-w-md" />
+          <div className="min-w-0">
+            <h2 className="font-display text-3xl font-medium text-ink sm:text-[2.7rem] sm:leading-tight">
+              Why human rights expert evidence decides contested returns
+            </h2>
+            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-body">
+              Home Office refusal letters frequently cite general country material without mapping the appellant&apos;s
+              profile to ICCPR, CAT, CEDAW, ICERD, or ECHR Article 3 thresholds. A human rights expert witness closes that
+              gap: independent analysis of violation patterns, state protection failures, and foreseeable harm on return,
+              formatted for Immigration Tribunal Practice Direction limits and Legal Aid prior authority.
+            </p>
+            <div className="mt-10 grid gap-6 sm:grid-cols-3">
+              {pillars.map((item) => (
+                <div key={item.title} className="border-t-2 border-seal pt-4">
+                  <h3 className="font-display text-xl font-medium text-ink">{item.title}</h3>
+                  <p className="mt-2 leading-relaxed text-body">{item.desc}</p>
                 </div>
-                <Link
-                  href="/violation-types"
-                  className="text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-seal hover:text-seal-deep"
-                >
-                  Full index →
-                </Link>
-              </div>
-              <div className="band-grid mt-8 sm:grid-cols-2 lg:grid-cols-4">
-                {violationTypes.slice(0, 8).map((v) => (
-                  <Link
-                    key={v.slug}
-                    href={`/violation-types/${v.slug}`}
-                    className="bg-surface p-5 transition hover:bg-mist"
-                  >
-                    <h3 className="font-display text-lg font-semibold text-ink">{v.title}</h3>
-                    <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-body">
-                      {v.metaDescription.slice(0, 100)}…
-                    </p>
-                  </Link>
-                ))}
-              </div>
-            </section>
-
-            <section id="method" className="scroll-mt-28">
-              <div className="grid items-stretch border border-line lg:grid-cols-2">
-                <div className="order-2 flex flex-col justify-center bg-surface p-7 sm:p-10 lg:order-1">
-                  <p className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-seal">Method</p>
-                  <h2 className="mt-3 font-display text-3xl font-semibold text-ink sm:text-4xl">
-                    From instruction to sealed report
-                  </h2>
-                  <ol className="mt-6 space-y-4">
-                    {[
-                      "Conflict check and scope note against your grounds of appeal and refusal letter.",
-                      "Source matrix: treaty text, UN observations, reliable NGO and academic material — cited, not paraphrased into advocacy.",
-                      "Opinion confined to expertise: severity, pattern, protection efficacy, and Article 3 / refugee risk on return.",
-                      "Declaration of duty to the tribunal, CV annex, and page discipline for filing.",
-                    ].map((step, i) => (
-                      <li key={i} className="grid grid-cols-[2.5rem_1fr] gap-3 text-sm leading-relaxed text-body">
-                        <span className="font-display font-semibold text-seal">{String(i + 1).padStart(2, "0")}</span>
-                        <span>{step}</span>
-                      </li>
-                    ))}
-                  </ol>
-                  <div className="mt-8 flex flex-wrap gap-4">
-                    <Link href="/how-reports-work" className="text-[0.7rem] font-semibold uppercase tracking-[0.1em] text-jade hover:text-seal">
-                      How reports work
-                    </Link>
-                    <Link href="/human-rights-framework" className="text-[0.7rem] font-semibold uppercase tracking-[0.1em] text-jade hover:text-seal">
-                      Framework guide
-                    </Link>
-                    <Link href="/article-3-deportation" className="text-[0.7rem] font-semibold uppercase tracking-[0.1em] text-jade hover:text-seal">
-                      Article 3 returns
-                    </Link>
-                  </div>
-                </div>
-                <div className="relative order-1 min-h-[14rem] lg:order-2 lg:min-h-full">
-                  <Image
-                    src="/images/archive-folios.jpg"
-                    alt="Archival treaty volumes and folio pages on a cool slate desk with a garnet ribbon bookmark"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                </div>
-              </div>
-            </section>
-
-            <section id="services" className="scroll-mt-28">
-              <div className="folio-rule mb-6" />
-              <h2 className="font-display text-3xl font-semibold text-ink sm:text-4xl">Instruction services</h2>
-              <p className="mt-3 max-w-xl text-body">
-                Single-point briefing for solicitors who need a named human rights expert matched to the violation theme
-                and forum.
-              </p>
-              <ul className="mt-8 divide-y divide-line border-y border-line">
-                {services.map((s) => (
-                  <li key={s.id}>
-                    <Link
-                      href={`/services/${s.id}`}
-                      className="group flex flex-col gap-2 py-5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8"
-                    >
-                      <span className="min-w-0">
-                        <span className="font-display text-xl font-semibold text-ink group-hover:text-seal">
-                          {s.name}
-                        </span>
-                        <span className="mt-1 block text-sm text-body">{s.description}</span>
-                      </span>
-                      <span className="shrink-0 text-[0.7rem] font-semibold uppercase tracking-[0.1em] text-steel group-hover:text-seal">
-                        Open →
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </section>
-
-            <section id="cases" className="scroll-mt-28">
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-                <div>
-                  <div className="folio-rule mb-6" />
-                  <h2 className="font-display text-3xl font-semibold text-ink sm:text-4xl">Case types</h2>
-                  <p className="mt-3 max-w-xl text-body">
-                    Asylum appeals, human rights claims, deportation and removal challenges where treaty and return-risk
-                    analysis is decisive.
-                  </p>
-                </div>
-                <Link
-                  href="/case-types"
-                  className="text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-seal hover:text-seal-deep"
-                >
-                  All case types →
-                </Link>
-              </div>
-              <div className="band-grid mt-8 sm:grid-cols-2">
-                {caseTypes.slice(0, 4).map((c) => (
-                  <Link key={c.slug} href={`/case-types/${c.slug}`} className="bg-surface p-6 transition hover:bg-mist">
-                    <h3 className="font-display text-xl font-semibold text-ink">{c.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-body">
-                      {c.metaDescription.slice(0, 130)}…
-                    </p>
-                  </Link>
-                ))}
-              </div>
-            </section>
+              ))}
+            </div>
           </div>
-
-          <aside className="folio-notes" aria-label="On this page">
-            <p className="mb-3 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-seal">On this page</p>
-            {notes.map((item) => (
-              <a key={item.href} href={item.href}>
-                {item.label}
-              </a>
-            ))}
-          </aside>
         </div>
-      </div>
+      </section>
+
+      <section id="violations" className="scroll-mt-28 bg-paper py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl min-w-0 px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <h2 className="font-display text-3xl font-medium text-ink sm:text-[2.7rem]">Violation themes</h2>
+              <p className="mt-3 max-w-xl text-lg text-body">
+                Torture, detention, expression, religion, gender, LGBT rights, defenders, and state violence.
+              </p>
+            </div>
+            <Link href="/violation-types" className="btn-ghost shrink-0 border-ink/40 text-ink hover:bg-ink hover:text-cream">
+              Full index
+            </Link>
+          </div>
+          <div className="mt-12 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+            {violationTypes.slice(0, 8).map((v) => {
+              const p = photoFor(v.slug);
+              return (
+                <Link key={v.slug} href={`/violation-types/${v.slug}`} className="group block">
+                  <div className="diamond-cut-sm relative aspect-[4/3] overflow-hidden bg-taupe">
+                    <Image src={p.src} alt={p.alt} fill sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 290px" className="object-cover transition duration-500 group-hover:scale-[1.04]" />
+                  </div>
+                  <h3 className="mt-4 font-display text-xl font-medium text-ink group-hover:text-seal">{v.title}</h3>
+                  <p className="mt-1.5 line-clamp-3 leading-relaxed text-body">{v.metaDescription}</p>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section id="method" className="relative scroll-mt-28 overflow-hidden bg-navy py-16 text-cream sm:py-24">
+        <Mark className="pointer-events-none absolute -left-24 -top-16 h-[30rem] w-auto opacity-[0.08]" navy="#F4EFE5" olive="#7D7E66" />
+        <div className="relative mx-auto grid max-w-7xl min-w-0 gap-14 px-4 sm:px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-center lg:px-8">
+          <div>
+            <h2 className="font-display text-3xl font-medium text-cream sm:text-[2.7rem]">From instruction to sealed report</h2>
+            <ol className="mt-9 space-y-0 border-t border-cream/15">
+              {method.map((step, i) => (
+                <li key={step} className="grid grid-cols-[3rem_1fr] gap-4 border-b border-cream/15 py-5">
+                  <span className="font-display text-2xl text-[#C9A6A9]">{i + 1}</span>
+                  <span className="text-lg leading-relaxed text-cream/85">{step}</span>
+                </li>
+              ))}
+            </ol>
+            <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
+              {[
+                { href: "/how-reports-work", label: "How reports work" },
+                { href: "/human-rights-framework", label: "Framework guide" },
+                { href: "/article-3-deportation", label: "Article 3 returns" },
+              ].map((l) => (
+                <Link key={l.href} href={l.href} className="flex items-center gap-2 font-semibold text-cream hover:text-taupe">
+                  <Diamond className="h-2.5 w-2.5 text-olive" />
+                  {l.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+          <div className="relative mx-auto w-full max-w-md">
+            <div className="diamond-cut relative aspect-[4/5] overflow-hidden bg-navy-deep">
+              <Image src={photos.magnaCarta.src} alt={photos.magnaCarta.alt} fill sizes="(max-width: 1024px) 85vw, 420px" className="object-cover" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" className="scroll-mt-28 bg-surface py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl min-w-0 px-4 sm:px-6 lg:px-8">
+          <h2 className="font-display text-3xl font-medium text-ink sm:text-[2.7rem]">Instruction services</h2>
+          <p className="mt-3 max-w-xl text-lg text-body">
+            Single-point briefing for solicitors who need a named human rights expert matched to the violation theme and
+            forum.
+          </p>
+          <ul className="mt-10 grid gap-x-10 md:grid-cols-2">
+            {services.map((s) => {
+              const p = photoFor(s.id);
+              return (
+                <li key={s.id} className="border-t border-line">
+                  <Link href={`/services/${s.id}`} className="group grid grid-cols-[5.5rem_1fr] items-center gap-5 py-5 sm:grid-cols-[7rem_1fr]">
+                    <div className="diamond-tl relative aspect-square overflow-hidden bg-taupe [--cut:1.4rem]">
+                      <Image src={p.src} alt={p.alt} fill sizes="112px" className="object-cover" />
+                    </div>
+                    <span className="min-w-0">
+                      <span className="block font-display text-xl font-medium text-ink group-hover:text-seal">{s.name}</span>
+                      <span className="mt-1 block leading-relaxed text-body">{s.description}</span>
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </section>
+
+      <section id="cases" className="scroll-mt-28 bg-paper py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl min-w-0 px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-start">
+            <div>
+              <h2 className="font-display text-3xl font-medium text-ink sm:text-[2.7rem]">Case types</h2>
+              <p className="mt-3 max-w-md text-lg text-body">
+                Asylum appeals, human rights claims, deportation and removal challenges where treaty and return-risk
+                analysis is decisive.
+              </p>
+              <DiamondPhoto photo={photos.pride} aspect="aspect-[4/3]" sizes="(max-width: 1024px) 85vw, 400px" className="mt-10 hidden w-full max-w-sm lg:block" />
+              <Link href="/case-types" className="btn-ghost mt-8 border-ink/40 text-ink hover:bg-ink hover:text-cream">
+                All case types
+              </Link>
+            </div>
+            <div className="grid gap-px bg-line sm:grid-cols-2">
+              {caseTypes.slice(0, 6).map((c) => (
+                <Link key={c.slug} href={`/case-types/${c.slug}`} className="group bg-paper p-6 transition hover:bg-surface">
+                  <Diamond className="h-3 w-3 text-olive group-hover:text-seal" />
+                  <h3 className="mt-4 font-display text-xl font-medium text-ink group-hover:text-seal">{c.title}</h3>
+                  <p className="mt-2 leading-relaxed text-body">{c.metaDescription}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       <CTASection />
-      <section className="border-t border-line bg-mist py-12">
+      <section className="border-t border-line bg-paper py-12">
         <div className="mx-auto min-w-0 max-w-7xl px-4 sm:px-6 lg:px-8">
           <RelatedLinks links={getHomepageRelatedLinks()} title="Key human rights resources" />
         </div>

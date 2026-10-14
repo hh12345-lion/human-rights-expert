@@ -4,6 +4,7 @@ import { CardGrid } from "@/components/ui/CardGrid";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { createMetadata } from "@/lib/metadata";
 import { guides } from "@/data/guides";
+import { sectionPhotos } from "@/lib/page-photos";
 
 export const metadata = createMetadata({
   title: "Human Rights Expert Evidence Guides | UK Solicitors",
@@ -18,7 +19,7 @@ export default function GuidesPage() {
   return (
     <>
       <PageJsonLd breadcrumbs={crumbs} />
-      <PageShell
+      <PageShell photo={sectionPhotos.guides}
         title="Solicitor Guides: Human Rights Expert Evidence"
         subtitle="Practical guides for UK immigration practitioners on instructing human rights expert witnesses."
         breadcrumbs={crumbs}

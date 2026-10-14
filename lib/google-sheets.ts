@@ -149,7 +149,7 @@ export async function updateRange(
 
 /**
  * Read all rows from a sheet (or a specific range).
- * Returns an array of arrays — each inner array is one row.
+ * Returns an array of arrays: each inner array is one row.
  */
 export async function readRows(
   range?: string,
@@ -256,7 +256,7 @@ export async function appendRowWithRetry(
 }
 
 /**
- * Structured error logging — never dumps credentials.
+ * Structured error logging: never dumps credentials.
  */
 export function logSheetsError(error: unknown, context: string) {
   const err = error as {

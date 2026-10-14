@@ -15,6 +15,42 @@ function sanitize(str: string): string {
   return str.replace(/<[^>]*>/g, "").trim();
 }
 
+/** Free-text field names used across the sites, mapped to the universal `message`. */
+const MESSAGE_KEYS = [
+  "message",
+  "Message",
+  "description",
+  "enquiry",
+  "details",
+  "summary",
+  "notes",
+  "matter",
+  "caseSummary",
+  "additionalInfo",
+  "additional_info",
+  "caseDetails",
+  "enquiryDetails",
+  "caseBrief",
+  "case_summary",
+  "matterDescription",
+  "additionalNotes",
+  "caseBackground",
+  "specificQuestions",
+  "briefSummary",
+  "conflict_info",
+  "brief",
+];
+
+function resolveLeadMessage(body: unknown): string {
+  if (!body || typeof body !== "object") return "";
+  const record = body as Record<string, unknown>;
+  for (const key of MESSAGE_KEYS) {
+    const value = record[key];
+    if (value != null && String(value).trim()) return sanitize(String(value));
+  }
+  return "";
+}
+
 /**
  * Column order for the "Human Rights Expert" tab:
  * Timestamp | Full Name | Organisation | Email | Phone | Violation Type |
@@ -78,18 +114,7 @@ export async function POST(request: Request) {
   }
 
   if (webhookUrl) {
-    const message =
-      sanitize(
-        body.message ??
-          (body as { Message?: string }).Message ??
-          body.summary ??
-          (body as { description?: string }).description ??
-          (body as { enquiry?: string }).enquiry ??
-          (body as { details?: string }).details ??
-          (body as { notes?: string }).notes ??
-          (body as { matter?: string }).matter ??
-          ""
-      );
+    const message = resolveLeadMessage(body);
     const outbound = buildLeadWebhookPayload({ fullName, email, phone, message });
     try {
       const res = await fetch(webhookUrl, {

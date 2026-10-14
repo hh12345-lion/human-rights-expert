@@ -47,7 +47,7 @@ export function getLeadWebhookUrl(): string | undefined {
 }
 
 /**
- * Lead_notification_setup.md — POST { fullName, email, phone } to /api/submit-lead.
+ * Lead_notification_setup.md: POST { fullName, email, phone } to /api/submit-lead.
  * Extra fields are used by the Next.js route (local `next dev` + Google Sheets).
  * On Netlify, the force-redirect sends this to /.netlify/functions/submit-lead.
  */

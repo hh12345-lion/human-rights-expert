@@ -3,6 +3,7 @@ import { ContactForm } from "@/components/forms/ContactForm";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { createMetadata } from "@/lib/metadata";
 import { SITE_EMAIL } from "@/lib/constants";
+import { sectionPhotos } from "@/lib/page-photos";
 
 export const metadata = createMetadata({
   title: "Instruct a Human Rights Expert Witness | Contact UK",
@@ -18,9 +19,9 @@ export default function ContactPage() {
   return (
     <>
       <PageJsonLd breadcrumbs={crumbs} />
-      <PageShell
+      <PageShell photo={sectionPhotos.contact}
         title="Instruct a human rights expert"
-        subtitle="Four fields. Confidential response within one to two business days."
+        subtitle="Four fields. Every enquiry is treated in confidence."
         breadcrumbs={crumbs}
       >
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_14rem]">

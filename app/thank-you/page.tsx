@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
 import { createMetadata } from "@/lib/metadata";
+import { sectionPhotos } from "@/lib/page-photos";
 
 export const metadata = createMetadata({
   title: "Thank You | Human Rights Experts",
@@ -12,10 +13,10 @@ export const metadata = createMetadata({
 
 export default function ThankYouPage() {
   return (
-    <PageShell title="Thank You for Your Instruction Enquiry">
+    <PageShell photo={sectionPhotos.contact} title="Thank You for Your Instruction Enquiry">
       <p className="mb-4 text-body leading-relaxed">
-        Thank you for contacting Human Rights Experts. We have received your instruction enquiry and will respond
-        within one to two business days with availability, fee information, and next steps.
+        Thank you for contacting Human Rights Experts. We have received your instruction enquiry and will reply
+        with availability, fee information, and next steps.
       </p>
       <p className="mb-8 text-body leading-relaxed">
         If your matter is urgent, please email us directly with your tribunal deadline and we will prioritise your

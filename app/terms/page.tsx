@@ -1,6 +1,7 @@
 import { PageShell } from "@/components/layout/PageShell";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { createMetadata } from "@/lib/metadata";
+import { sectionPhotos } from "@/lib/page-photos";
 
 export const metadata = createMetadata({
   title: "Terms of Use | Human Rights Experts",
@@ -16,7 +17,7 @@ export default function TermsPage() {
   return (
     <>
       <PageJsonLd breadcrumbs={crumbs} />
-      <PageShell title="Terms of Use" breadcrumbs={crumbs}>
+      <PageShell photo={sectionPhotos.legal} title="Terms of Use" breadcrumbs={crumbs}>
         <p className="text-body leading-relaxed">
           Human Rights Experts is an expert witness matching service for UK immigration solicitors. We are not a law firm
           and do not provide legal advice. Expert reports instructed through our service operate independently and owe

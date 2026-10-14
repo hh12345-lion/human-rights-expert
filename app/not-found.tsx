@@ -16,11 +16,10 @@ export default function NotFound() {
           aria-hidden
         />
         <div className="relative mx-auto max-w-3xl px-4 sm:px-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-seal">Human Rights Experts</p>
-          <p className="mt-8 text-8xl font-bold leading-none text-seal/90 sm:text-9xl" aria-hidden="true">
+          <h1 className="text-3xl font-medium text-white sm:text-5xl">Page not found</h1>
+          <p className="mt-6 font-display text-8xl leading-none text-[#C9A6A9] sm:text-9xl" aria-hidden="true">
             404
           </p>
-          <h1 className="mt-4 text-3xl font-bold text-white sm:text-4xl">Page Not Found</h1>
           <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-white/80">
             The page you requested does not exist or may have moved. Use the links below to find human rights expert
             witness guidance for UK asylum and immigration tribunals.

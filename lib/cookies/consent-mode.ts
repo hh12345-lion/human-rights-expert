@@ -10,7 +10,7 @@ declare global {
 }
 
 /**
- * Google Consent Mode v2 — must run before any Google tag loads.
+ * Google Consent Mode v2: must run before any Google tag loads.
  * Called from ConsentDefaultsScript (beforeInteractive) and on client mount.
  */
 export function initGoogleConsentDefaults(): void {

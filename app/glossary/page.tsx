@@ -3,6 +3,7 @@ import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { createMetadata } from "@/lib/metadata";
 import { GlossarySearch } from "@/components/glossary/GlossarySearch";
 import { glossaryTerms } from "@/data/glossary";
+import { sectionPhotos } from "@/lib/page-photos";
 
 const GLOSSARY_FAQS = glossaryTerms.slice(0, 12).map((t) => ({
   question: `What is ${t.term}?`,
@@ -22,7 +23,7 @@ export default function GlossaryPage() {
   return (
     <>
       <PageJsonLd breadcrumbs={crumbs} faqs={GLOSSARY_FAQS} />
-      <PageShell
+      <PageShell photo={sectionPhotos.glossary}
         title="Human Rights Expert Witness Glossary"
         subtitle="Key terms and definitions for UK immigration practitioners working with human rights expert evidence."
         breadcrumbs={crumbs}

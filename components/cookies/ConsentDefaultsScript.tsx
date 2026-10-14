@@ -1,7 +1,7 @@
 import Script from "next/script";
 
 /**
- * Google Consent Mode v2 defaults — runs beforeInteractive so no Google tag
+ * Google Consent Mode v2 defaults: runs beforeInteractive so no Google tag
  * can set cookies before the user chooses via our banner.
  */
 export function ConsentDefaultsScript() {

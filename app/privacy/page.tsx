@@ -2,6 +2,7 @@ import { PageShell } from "@/components/layout/PageShell";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { createMetadata } from "@/lib/metadata";
 import { SITE_EMAIL } from "@/lib/constants";
+import { sectionPhotos } from "@/lib/page-photos";
 
 export const metadata = createMetadata({
   title: "Privacy Policy | Human Rights Experts",
@@ -17,7 +18,7 @@ export default function PrivacyPage() {
   return (
     <>
       <PageJsonLd breadcrumbs={crumbs} />
-      <PageShell title="Privacy Policy" breadcrumbs={crumbs}>
+      <PageShell photo={sectionPhotos.legal} title="Privacy Policy" breadcrumbs={crumbs}>
         <p className="text-body leading-relaxed">
           Human Rights Experts is operated to connect UK solicitors with qualified human rights expert witnesses. We
           collect personal data submitted through our contact form (name, law firm, email, phone, and case details)

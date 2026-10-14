@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { SITE_URL } from "./constants";
 import { isProductionSite } from "./seo/is-production";
 
-const OG_IMAGE_ALT = "Human Rights Experts - Human Rights Expert Witness UK";
+const OG_IMAGE_ALT = "Human Rights Experts: human rights expert witness evidence for UK tribunals";
 
 export const OPEN_GRAPH_IMAGE = {
-  url: `${SITE_URL}/opengraph-image`,
+  url: `${SITE_URL}/brand/og.png`,
   width: 1200,
   height: 630,
   alt: OG_IMAGE_ALT,
@@ -39,7 +39,7 @@ export function createMetadata({
       type: "website",
       images: [OPEN_GRAPH_IMAGE],
     },
-    twitter: { card: "summary_large_image", title, description },
+    twitter: { card: "summary_large_image", title, description, images: [OPEN_GRAPH_IMAGE.url] },
     robots: blockIndexing
       ? { index: false, follow, googleBot: { index: false, follow } }
       : { index: true, follow: true },

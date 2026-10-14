@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Archivo, IBM_Plex_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CookieConsentProvider } from "@/components/cookies";
@@ -8,19 +8,23 @@ import { SITE_URL } from "@/lib/constants";
 import { isProductionSite } from "@/lib/seo/is-production";
 import "./globals.css";
 
-const plex = IBM_Plex_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-plex",
+const newsreader = localFont({
+  src: [
+    { path: "./fonts/newsreader.woff2", weight: "400 700", style: "normal" },
+    { path: "./fonts/newsreader-it-italic.woff2", weight: "400 600", style: "italic" },
+  ],
+  variable: "--font-newsreader",
   display: "swap",
 });
 
-const archivo = Archivo({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-archivo",
+const afacad = localFont({
+  src: [{ path: "./fonts/afacad.woff2", weight: "400 700", style: "normal" }],
+  variable: "--font-afacad",
   display: "swap",
 });
+
+/** Every page is rendered on the server per request. */
+export const dynamic = "force-dynamic";
 
 export const viewport = {
   width: "device-width",
@@ -54,7 +58,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-GB" className={`${plex.variable} ${archivo.variable} h-full`}>
+    <html lang="en-GB" className={`${newsreader.variable} ${afacad.variable} h-full`}>
       <body className="flex min-h-full min-w-0 flex-col overflow-x-hidden font-sans antialiased">
         <ConsentDefaultsScript />
         <CookieConsentProvider>

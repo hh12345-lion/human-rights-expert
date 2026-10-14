@@ -4,6 +4,7 @@ import { CardGrid } from "@/components/ui/CardGrid";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { createMetadata } from "@/lib/metadata";
 import { caseTypes } from "@/data/case-types";
+import { sectionPhotos } from "@/lib/page-photos";
 
 export const metadata = createMetadata({
   title: "Human Rights Case Types | Expert Witness UK Immigration Tribunals",
@@ -18,7 +19,7 @@ export default function CaseTypesPage() {
   return (
     <>
       <PageJsonLd breadcrumbs={crumbs} />
-      <PageShell
+      <PageShell photo={sectionPhotos.caseTypes}
         title="Human Rights Case Types"
         subtitle="Expert witness reports for all major human rights proceedings in UK immigration tribunals."
         breadcrumbs={crumbs}

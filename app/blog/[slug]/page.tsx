@@ -1,19 +1,16 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CTASection } from "@/components/ui/CTASection";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
-import { getBlogBySlug, getBlogSlugs } from "@/lib/blog";
+import { getBlogBySlug } from "@/lib/blog";
+import { PageHero } from "@/components/ui/PageHero";
+import { fallbackPhoto } from "@/lib/page-photos";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import { markdownToHtml } from "@/lib/markdown";
 import { createMetadata, OPEN_GRAPH_IMAGE } from "@/lib/metadata";
 
 type Props = { params: Promise<{ slug: string }> };
-
-export async function generateStaticParams() {
-  return getBlogSlugs().map((slug) => ({ slug }));
-}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -87,32 +84,14 @@ export default async function BlogPostPage({ params }: Props) {
           url,
         }}
       />
-      {post.image ? (
-        <div className="relative mx-auto h-[min(28rem,55vw)] w-full max-w-6xl border-b border-line">
-          <Image
-            src={post.image}
-            alt={post.imageAlt || post.title}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
-        </div>
-      ) : null}
+      <PageHero
+        title={post.title}
+        subtitle={post.description}
+        photo={post.image ? { src: post.image, alt: post.imageAlt || post.title } : fallbackPhoto(post.slug)}
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Blog", href: "/blog" }, { label: post.title }]}
+      />
 
       <article className="prose-content mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
-        <nav aria-label="Breadcrumb" className="mb-6 not-prose text-sm text-steel">
-          <Link href="/" className="hover:text-seal">
-            Home
-          </Link>
-          {" / "}
-          <Link href="/blog" className="hover:text-seal">
-            Blog
-          </Link>
-          {" / "}
-          <span className="text-ink">{post.title}</span>
-        </nav>
-
         <p className="not-prose text-[11px] font-semibold uppercase tracking-widest text-steel">
           <time dateTime={post.updated || post.date}>
             {new Date(post.updated || post.date).toLocaleDateString("en-GB", {
@@ -124,20 +103,15 @@ export default async function BlogPostPage({ params }: Props) {
           <span className="mx-2">·</span>
           <span className="normal-case tracking-normal">{post.readingTime}</span>
         </p>
-        <h1 className="mt-3 font-display text-3xl font-semibold leading-tight text-ink sm:text-4xl">
-          {post.title}
-        </h1>
-        <p className="mt-4 text-lg text-body">{post.description}</p>
-
         <div className="mt-10" dangerouslySetInnerHTML={{ __html: html }} />
 
         <p className="not-prose mt-12 border-t border-line pt-8 text-sm">
           <Link href="/blog" className="font-semibold text-seal hover:text-seal-deep">
-            ← Back to the blog
+            Back to the blog
           </Link>
           <span className="mx-3 text-steel/50">·</span>
           <Link href="/contact" className="font-semibold text-seal hover:text-seal-deep">
-            Instruct expert
+            Instruct an expert
           </Link>
         </p>
       </article>
